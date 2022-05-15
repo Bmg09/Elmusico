@@ -19,6 +19,7 @@ public class dbactivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(dbactivity.this,MainActivity.class);
                 startActivity(intent);
+                //started activity
             }
         });
     }
