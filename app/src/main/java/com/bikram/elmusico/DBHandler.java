@@ -36,7 +36,7 @@ public class DBHandler extends SQLiteOpenHelper {
         }
     }
 
-    public Boolean deletedata (String name)
+    public Boolean deleteData(String name)
     {
         SQLiteDatabase DB = this.getWritableDatabase();
         Cursor cursor = DB.rawQuery("Select * from MusicTable Where name=?", new String[]{name} );
@@ -52,7 +52,7 @@ public class DBHandler extends SQLiteOpenHelper {
         }
     }
 
-    public Cursor getdata() {
+    public Cursor getData() {
         SQLiteDatabase DB = this.getWritableDatabase();
         Cursor cursor = DB.rawQuery("Select * from MusicTable", null);
         return cursor;
