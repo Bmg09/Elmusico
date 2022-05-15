@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 public class Music_Activity extends AppCompatActivity {
     TextView music, maxdur, currduration;
     static int pos1 = 0;
-    String url, nexturl;
+    String url;
     String song_name;
     private SeekBar seekBar;
     private MediaPlayer mediaPlayer;
@@ -106,7 +106,7 @@ public class Music_Activity extends AppCompatActivity {
 
             }
         });
-        //Log.d("Outside", String.valueOf(pos1));
+
         nexttrack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
