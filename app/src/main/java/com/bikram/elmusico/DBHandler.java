@@ -52,4 +52,9 @@ public class DBHandler extends SQLiteOpenHelper {
         }
     }
 
+    public Cursor getdata() {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("Select * from MusicTable", null);
+        return cursor;
+    }
 }

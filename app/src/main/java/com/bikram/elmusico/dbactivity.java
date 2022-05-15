@@ -4,14 +4,17 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class dbactivity extends AppCompatActivity {
-    Button sendnextpage,insert,delete;
+    Button sendnextpage,insert,delete,view;
     DBHandler dbHandler;
     EditText name,artist_name,url;
     @Override
@@ -24,6 +27,7 @@ public class dbactivity extends AppCompatActivity {
         artist_name = findViewById(R.id.artist_name);
         url = findViewById(R.id.url);
         delete = findViewById(R.id.delete);
+        view = findViewById(R.id.view_data);
         dbHandler = new DBHandler(this);
         insert.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +48,19 @@ public class dbactivity extends AppCompatActivity {
                 }
             }
         });
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Cursor res = dbHandler.getdata();
+                if(res.getCount()==0){
+                    Toast.makeText(dbactivity.this, "No Entry Exists", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                while(res.moveToNext()){
+                    MainActivity.m.add(new Music(res.getString(0),res.getString(1),res.getString(2)));
+                }
+            }
+        });
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,6 +73,7 @@ public class dbactivity extends AppCompatActivity {
                 }
             }
         });
+
         sendnextpage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
