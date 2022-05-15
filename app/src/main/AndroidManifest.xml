@@ -14,13 +14,14 @@
         android:theme="@style/Theme.Elmusico"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".dbactivity"
+            android:name=".MainActivity"
+            android:label="List"
             android:exported="false" />
         <activity
             android:name=".Music_Activity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".dbactivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
