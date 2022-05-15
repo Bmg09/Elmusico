@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     public static ArrayList<Music> m = new ArrayList<>();
     RecyclerView recyclerView;
+    Adapter ad;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,9 +25,15 @@ public class MainActivity extends AppCompatActivity {
         m.add(new Music("Love the way u lie","eminem","https://themamaship.com/music/Catalog/Love%20The%20Way%20You%20Lie%20-%20Rihanna.mp3"));
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        Adapter ad = new Adapter(this,m);
+        ad = new Adapter(this,m);
         recyclerView.setAdapter(ad);
         recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(),DividerItemDecoration.VERTICAL));
-
+    }
+    @SuppressLint("NotifyDataSetChanged")
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        m.clear();
+        ad.notifyDataSetChanged();
     }
 }
