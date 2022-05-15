@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class dbactivity extends AppCompatActivity {
-    Button sendnextpage,insert,delete,view;
+    Button sendnextpage,insert,delete,view,resetdb;
     DBHandler dbHandler;
     EditText name,artist_name,url;
     @Override
@@ -56,9 +56,9 @@ public class dbactivity extends AppCompatActivity {
                 }
                 StringBuffer buffer = new StringBuffer();
                 while(res.moveToNext()){
-                    buffer.append("Name :"+res.getString(0)+"\n");
-                    buffer.append("Artist Name :"+res.getString(1)+"\n");
-                    buffer.append("Url :"+res.getString(2)+"\n\n");
+                    buffer.append("Name :").append(res.getString(0)).append("\n");
+                    buffer.append("Artist Name :").append(res.getString(1)).append("\n");
+                    buffer.append("Url :").append(res.getString(2)).append("\n\n");
                 }
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(dbactivity.this);
@@ -66,6 +66,7 @@ public class dbactivity extends AppCompatActivity {
                 builder.setTitle("Musics:");
                 builder.setMessage(buffer.toString());
                 builder.show();
+
             }
         });
         delete.setOnClickListener(new View.OnClickListener() {
@@ -101,6 +102,13 @@ public class dbactivity extends AppCompatActivity {
                 }
                 Intent intent = new Intent(dbactivity.this,MainActivity.class);
                 startActivity(intent);
+            }
+        });
+        resetdb = findViewById(R.id.resetdb);
+        resetdb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dbHandler.reset();
             }
         });
     }

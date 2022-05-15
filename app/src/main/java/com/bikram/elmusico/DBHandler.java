@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class DBHandler extends SQLiteOpenHelper {
+    SQLiteDatabase DB;
     public DBHandler(@Nullable Context context) {
         super(context, "MusicDb", null, 1);
     }
@@ -56,5 +57,8 @@ public class DBHandler extends SQLiteOpenHelper {
         SQLiteDatabase DB = this.getWritableDatabase();
         Cursor cursor = DB.rawQuery("Select * from MusicTable", null);
         return cursor;
+    }
+    public void reset(){
+        DB.execSQL("drop Table if exists MusicTable");
     }
 }
