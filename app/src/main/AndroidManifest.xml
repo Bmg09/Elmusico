@@ -15,6 +15,7 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".MainActivity"
+            android:label="List"
             android:exported="false" />
         <activity
             android:name=".Music_Activity"
