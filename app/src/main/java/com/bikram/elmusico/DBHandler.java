@@ -22,7 +22,6 @@ public class DBHandler extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase DB, int i, int i1) {
         DB.execSQL("drop Table if exists MusicTable");
     }
-
     public Boolean insertuserdata(String name, String artist_name, String url) {
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -37,19 +36,20 @@ public class DBHandler extends SQLiteOpenHelper {
         }
     }
 
-//    public Boolean deletedata(String name) {
-//        SQLiteDatabase DB = this.getWritableDatabase();
-//        Cursor cursor = DB.rawQuery("Select * from Userdetails Where name=?", new String[]{name});
-//        if (cursor.getCount() > 0) {
-//            long result = DB.delete("Userdetails", "name=?", new String[]{name});
-//            if (result == -1) {
-//                return false;
-//            } else {
-//                return true;
-//            }
-//        } else {
-//            return false;
-//        }
-//    }
+    public Boolean deletedata (String name)
+    {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("Select * from MusicTable Where name=?", new String[]{name} );
+        if (cursor.getCount() > 0) {
+            long result = DB.delete("MusicTable", "name=?", new String[]{name});
+            if (result == -1) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
 
 }
