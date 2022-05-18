@@ -43,7 +43,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name" />
     <EditText
-        android:id="@+id/uri"
+        android:id="@+id/url"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -117,7 +117,7 @@
         android:layout_marginEnd="16dp"
         android:text="reset"
         android:textSize="9sp"
-        app:layout_constraintBottom_toBottomOf="@+id/uri"
+        app:layout_constraintBottom_toBottomOf="@+id/url"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:layout_constraintVertical_bias="0.47" />

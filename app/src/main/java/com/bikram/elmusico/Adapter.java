@@ -26,7 +26,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         this.c =c;
         this.m = m;
     }
-
     @NonNull
     @Override
     public Adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -35,25 +34,17 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               if(isNetworkAvailable()){
                 //Toast.makeText(c, "Size is"+String.valueOf(getItemCount()), Toast.LENGTH_SHORT).show();
                 Intent intent =new Intent(c,Music_Activity.class);
                 intent.putExtra(EXTRA_URL,m.get(t.getAdapterPosition()).url);
                 intent.putExtra(EXTRA_SONG,m.get(t.getAdapterPosition()).m_name);
                 intent.putExtra(EXTRA_POS,t.getAdapterPosition());
                 c.startActivity(intent);
-               }else
-                   Toast.makeText(c, "Bhai internet chalu karle", Toast.LENGTH_SHORT).show();
             }
         });
         return t;
     }
-    private boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) c.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
-    }
+
     @Override
     public void onBindViewHolder(@NonNull Adapter.ViewHolder holder, int position) {
         holder.getM_name().setText(m.get(position).m_name);

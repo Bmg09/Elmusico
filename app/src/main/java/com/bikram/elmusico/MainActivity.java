@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     public static ArrayList<Music> m = new ArrayList<>();
+
     RecyclerView recyclerView;
     Adapter ad;
     @Override
