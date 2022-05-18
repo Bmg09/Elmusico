@@ -11,10 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-
 public class dbactivity extends AppCompatActivity {
-    Button sendnextpage,insert,delete,view;
+    Button sendnextpage,insert,delete,view,resetdb;
     DBHandler dbHandler;
     EditText name,artist_name,url;
     @Override
@@ -51,16 +49,16 @@ public class dbactivity extends AppCompatActivity {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Cursor res = dbHandler.getdata();
+                Cursor res = dbHandler.getData();
                 if(res.getCount()==0){
                     Toast.makeText(dbactivity.this, "No Entry Exists", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 StringBuffer buffer = new StringBuffer();
                 while(res.moveToNext()){
-                    buffer.append("Name :"+res.getString(0)+"\n");
-                    buffer.append("Artist Name :"+res.getString(1)+"\n");
-                    buffer.append("Url :"+res.getString(2)+"\n\n");
+                    buffer.append("Name :").append(res.getString(0)).append("\n");
+                    buffer.append("Artist Name :").append(res.getString(1)).append("\n");
+                    buffer.append("Url :").append(res.getString(2)).append("\n\n");
                 }
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(dbactivity.this);
@@ -68,6 +66,7 @@ public class dbactivity extends AppCompatActivity {
                 builder.setTitle("Musics:");
                 builder.setMessage(buffer.toString());
                 builder.show();
+
             }
         });
         delete.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +79,7 @@ public class dbactivity extends AppCompatActivity {
                     builder.setMessage("Empty fields please fill appropriate data");
                     builder.show();
                 }else{
-                Boolean chckdelete = dbHandler.deletedata(name.getText().toString());
+                Boolean chckdelete = dbHandler.deleteData(name.getText().toString());
                 if(chckdelete){
                     Toast.makeText(dbactivity.this, "Success deleting", Toast.LENGTH_SHORT).show();
                 }
@@ -93,7 +92,7 @@ public class dbactivity extends AppCompatActivity {
         sendnextpage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Cursor res = dbHandler.getdata();
+                Cursor res = dbHandler.getData();
                 if(res.getCount()==0){
                     Toast.makeText(dbactivity.this, "No Entry Exists", Toast.LENGTH_SHORT).show();
                     return;
@@ -103,6 +102,13 @@ public class dbactivity extends AppCompatActivity {
                 }
                 Intent intent = new Intent(dbactivity.this,MainActivity.class);
                 startActivity(intent);
+            }
+        });
+        resetdb = findViewById(R.id.resetdb);
+        resetdb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dbHandler.reset();
             }
         });
     }
