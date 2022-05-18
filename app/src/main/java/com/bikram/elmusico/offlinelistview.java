@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class offlinelistview extends AppCompatActivity {
     static final int REQUEST_MP3_OPEN = 1;
-    ArrayList<Music> offlinelist = new ArrayList<>();
+    public static ArrayList<Music> offlinelist = new ArrayList<>();
     EditText filedesc, name, artist_name;
     Button next, insert, view, delete;
     Uri imageuri;
@@ -135,6 +135,7 @@ public class offlinelistview extends AppCompatActivity {
         Adapter ad = new Adapter(offlinelistview.this,m);
         recyclerView.setAdapter(ad);
         recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(),DividerItemDecoration.VERTICAL));
+
     }
 
     @Override
@@ -143,5 +144,11 @@ public class offlinelistview extends AppCompatActivity {
         if (requestCode == REQUEST_MP3_OPEN && resultCode == RESULT_OK) {
             imageuri = data.getData();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        offlinelist.clear();
     }
 }

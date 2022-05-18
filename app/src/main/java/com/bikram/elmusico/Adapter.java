@@ -20,6 +20,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     public static final String EXTRA_URL ="com.bikram.elmusico.extra.URL";
     public static final String EXTRA_SONG ="com.bikram.elmusico.extra.SONG";
     public static final String EXTRA_POS = "com.bikram.elmusico.extra.Pos";
+    public static final String EXTRA_URI = "com.bikram.elmusico.EXTRA.URI";
+    public static final String EXTRA_SONG_OFF = "com.bikram.elmusico.EXTRA.SONGOFF";
     Context c;
     List<Music> m;
     public Adapter(Context c,List<Music> m) {
@@ -34,12 +36,19 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Toast.makeText(c, "Size is"+String.valueOf(getItemCount()), Toast.LENGTH_SHORT).show();
+                if(m.get(t.getAdapterPosition()).uri != null){
+                    Intent intent1 = new Intent(c,offlineplayer.class);
+                    intent1.putExtra(EXTRA_URI,String.valueOf(m.get(t.getAdapterPosition()).uri));
+                    intent1.putExtra(EXTRA_SONG_OFF,m.get(t.getAdapterPosition()).m_name);
+                    intent1.putExtra(EXTRA_POS,t.getAdapterPosition());
+                    c.startActivity(intent1);
+                }else{
                 Intent intent =new Intent(c,Music_Activity.class);
                 intent.putExtra(EXTRA_URL,m.get(t.getAdapterPosition()).url);
                 intent.putExtra(EXTRA_SONG,m.get(t.getAdapterPosition()).m_name);
                 intent.putExtra(EXTRA_POS,t.getAdapterPosition());
                 c.startActivity(intent);
+                }
             }
         });
         return t;

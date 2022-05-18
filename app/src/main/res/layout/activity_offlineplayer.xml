@@ -18,7 +18,7 @@
         android:contentDescription="@string/logo" />
 
     <SeekBar
-        android:id="@+id/seekBar"
+        android:id="@+id/seekBaroff"
         android:layout_width="335dp"
         android:layout_height="20dp"
         android:layout_marginTop="60dp"
@@ -27,13 +27,13 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <TextView
-        android:id="@+id/music_name"
+        android:id="@+id/music_nameoff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/adamina"
         android:text="TextView"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/seekBar"
+        app:layout_constraintBottom_toTopOf="@+id/seekBaroff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,64 +41,67 @@
         app:layout_constraintVertical_bias="0.195" />
 
     <ImageView
-        android:id="@+id/replay"
+        android:id="@+id/replayoff"
         android:layout_width="43dp"
         android:layout_height="43dp"
-        app:layout_constraintBottom_toTopOf="@+id/play"
+        app:layout_constraintBottom_toTopOf="@+id/playoff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.956"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar"
+        app:layout_constraintTop_toBottomOf="@+id/seekBaroff"
         app:srcCompat="@drawable/ic_baseline_replay_24" />
 
     <TextView
-        android:id="@+id/maxduration"
+        android:id="@+id/maxdurationoff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/seekBar"
-        app:layout_constraintStart_toEndOf="@+id/music_name" />
+        app:layout_constraintBottom_toTopOf="@+id/seekBaroff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.839"
+        app:layout_constraintStart_toEndOf="@+id/currentDurationoff"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/currentDuration"
+        android:id="@+id/currentDurationoff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
-        app:layout_constraintBottom_toTopOf="@+id/seekBar"
+        app:layout_constraintBottom_toTopOf="@+id/seekBaroff"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/next"
+        android:id="@+id/nextoff"
         android:layout_width="89sp"
         android:layout_height="76sp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.403"
-        app:layout_constraintStart_toEndOf="@+id/play"
-        app:layout_constraintTop_toBottomOf="@+id/replay"
+        app:layout_constraintStart_toEndOf="@+id/playoff"
+        app:layout_constraintTop_toBottomOf="@+id/replayoff"
         app:srcCompat="@drawable/ic_baseline_skip_next_24" />
 
     <ImageView
-        android:id="@+id/play"
+        android:id="@+id/playoff"
         android:layout_width="89sp"
         android:layout_height="76sp"
         android:layout_marginTop="108dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar"
+        app:layout_constraintTop_toBottomOf="@+id/seekBaroff"
         app:srcCompat="@drawable/ic_baseline_play_arrow_24" />
 
     <ImageView
-        android:id="@+id/previous"
+        android:id="@+id/previousoff"
         android:layout_width="89sp"
         android:layout_height="76sp"
         android:layout_marginTop="108dp"
         android:layout_marginEnd="10dp"
-        app:layout_constraintEnd_toStartOf="@+id/play"
+        app:layout_constraintEnd_toStartOf="@+id/playoff"
         app:layout_constraintHorizontal_bias="0.532"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar"
+        app:layout_constraintTop_toBottomOf="@+id/seekBaroff"
         app:srcCompat="@drawable/ic_baseline_skip_previous_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
