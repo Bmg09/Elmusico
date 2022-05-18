@@ -14,6 +14,9 @@
         android:theme="@style/Theme.Elmusico"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".offlineplayer"
+            android:exported="false" />
+        <activity
             android:name=".dbactivity"
             android:exported="false" />
         <activity
@@ -23,14 +26,15 @@
         <activity
             android:name=".Music_Activity"
             android:exported="false" />
-        <activity android:name=".offlinelistview"
-            android:exported="false"/>
+        <activity
+            android:name=".offlinelistview"
+            android:exported="false" />
         <activity
             android:name=".welcomescreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <action android:name="android.content.action.DOCUMENTS_PROVIDER" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

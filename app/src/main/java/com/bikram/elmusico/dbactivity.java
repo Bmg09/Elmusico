@@ -23,7 +23,7 @@ public class dbactivity extends AppCompatActivity {
         insert = findViewById(R.id.insert);
         name = findViewById(R.id.name);
         artist_name = findViewById(R.id.artist_name);
-        url = findViewById(R.id.url);
+        url = findViewById(R.id.uri);
         delete = findViewById(R.id.delete);
         view = findViewById(R.id.view_data);
         dbHandler = new DBHandler(this);

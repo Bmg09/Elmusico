@@ -41,11 +41,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name" />
     <EditText
-        android:id="@+id/url"
+        android:id="@+id/uri"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="URL"
+        android:hint="Select file"
         android:inputType="textUri"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
