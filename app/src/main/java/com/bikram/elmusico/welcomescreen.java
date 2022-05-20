@@ -9,34 +9,36 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 public class welcomescreen extends AppCompatActivity {
     Button online,offline;
+    ToggleButton toggleButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcomescreen);
-        online =  findViewById(R.id.online);
-        offline = findViewById(R.id.offline);
-        online.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(isNetworkAvailable()){
-                Intent intent = new Intent(welcomescreen.this,dbactivity.class);
-                    Toast.makeText(welcomescreen.this, "internet available", Toast.LENGTH_SHORT).show();
-                startActivity(intent);
+        toggleButton = findViewById(R.id.toggleButton);
+
+        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    Toast.makeText(welcomescreen.this, "online", Toast.LENGTH_SHORT).show();
+                    if(isNetworkAvailable()){
+                        Intent intent = new Intent(welcomescreen.this,dbactivity.class);
+                        Toast.makeText(welcomescreen.this, "internet available", Toast.LENGTH_SHORT).show();
+                        startActivity(intent);
+                    }
+                    else{
+                        Toast.makeText(welcomescreen.this, "Check internet connection", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(welcomescreen.this, "Offline", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(welcomescreen.this,offlinelistview.class);
+                    startActivity(intent);
                 }
-                else{
-                    Toast.makeText(welcomescreen.this, "Check internet connection", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-        offline.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(welcomescreen.this,offlinelistview.class);
-                startActivity(intent);
             }
         });
     }

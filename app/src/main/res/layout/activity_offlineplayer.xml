@@ -44,7 +44,7 @@
         android:id="@+id/replayoff"
         android:layout_width="43dp"
         android:layout_height="43dp"
-        app:layout_constraintBottom_toTopOf="@+id/playoff"
+        android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.956"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,38 +70,47 @@
         app:layout_constraintBottom_toTopOf="@+id/seekBaroff"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/nextoff"
-        android:layout_width="89sp"
-        android:layout_height="76sp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.403"
-        app:layout_constraintStart_toEndOf="@+id/playoff"
-        app:layout_constraintTop_toBottomOf="@+id/replayoff"
-        app:srcCompat="@drawable/ic_baseline_skip_next_24" />
 
-    <ImageView
-        android:id="@+id/playoff"
-        android:layout_width="89sp"
-        android:layout_height="76sp"
-        android:layout_marginTop="108dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        android:paddingStart="16dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBaroff"
-        app:srcCompat="@drawable/ic_baseline_play_arrow_24" />
+        app:layout_constraintTop_toBottomOf="@+id/seekBaroff">
 
-    <ImageView
-        android:id="@+id/previousoff"
-        android:layout_width="89sp"
-        android:layout_height="76sp"
-        android:layout_marginTop="108dp"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintEnd_toStartOf="@+id/playoff"
-        app:layout_constraintHorizontal_bias="0.532"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBaroff"
-        app:srcCompat="@drawable/ic_baseline_skip_previous_24" />
+        <ImageView
+            android:id="@+id/previousoff"
+            android:layout_width="89sp"
+            android:layout_height="76sp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_baseline_skip_previous_24" />
+
+        <ImageView
+            android:id="@+id/playoff"
+            android:layout_width="89sp"
+            android:layout_height="76sp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_baseline_play_arrow_24" />
+
+        <ImageView
+            android:id="@+id/nextoff"
+            android:layout_width="89sp"
+            android:layout_height="76sp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_baseline_skip_next_24" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
